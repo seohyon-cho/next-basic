@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -11,3 +13,14 @@ li {
 a {
 	text-decoration: none;
 }
+
+.roboto {
+	font-family: 'roboto';
+	font-weight: 400;
+}
+
+/*
+	일반적으로 구글 서버에서 가져온 폰트 (cdn 방식) 는 최적화가 되어있지 않으므로,
+	개발자도구 네트워크 탭에서 확인해보면, 동일한 폰트임에도 불구하고 
+	next에서 자체적으로 최적화 시켜서 가져온 폰트보다 40% 가량 파일 용량이 더 큼.
+*/

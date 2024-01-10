@@ -1,5 +1,27 @@
 import Header from '../components/header/header';
 import './styles/globals.scss';
+import { Rubik_Maze } from 'next/font/google';
+
+/*
+	외부 폰트 적용 시, display 옵션별 기능 설명
+	참조링크 : https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
+	- auto : 사용하는 브라우저의 user agent 설정 값에 따라서, 자동으로 외부폰트 적용설정을 사용하는 것.
+	- block : 상대적으로 적은 대기시간을 설정 후, 외부 폰트가 적용될 때까지 계속해서 시도
+	- swap : block보다 대기시간을 더 짧게 설정하고, 외부 폰트가 적용될 때까지 계속해서 시도
+	- fallback : 대기시간도 짧게 설정하고, 폰트 적용도 적은 횟수로 시도 후, 외부 폰트 미적용 시 바로 대체 시스템 폰트 적용 처리.
+	- optional : 대기시간을 짧게 설정하고 외부 폰트 시도를 무시. 
+
+	- block period : 외부폰트가 import 되기 전까지 아무 것도 보이지 않는, (대체 폰트가 적용된) 상태
+	- font swap period : 외부 폰트를 적용하려고 시도하는 상태 
+	- failure period : 외부폰트 연결을 실패로 인지하는 상태 
+*/
+
+const rubik = Rubik_Maze({
+	weight: '400',
+	subsets: ['latin'],
+	display: 'swap',
+	preload: true, // subsets 가 지정되어 있을 시 preload 기능 사용 가능.
+});
 
 export const metadata = {
 	title: '메인페이지',
@@ -11,6 +33,8 @@ export default function RootLayout({ children }) {
 		<html lang='en'>
 			<body>
 				<Header />
+				<h1 className='roboto'>No Google Font</h1>
+				<h1 className={rubik.className}>Google Font</h1>
 				{children}
 			</body>
 		</html>
