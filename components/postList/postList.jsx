@@ -1,5 +1,6 @@
 // 동적인 내용을 담고 있는 부분만 따로 컴포넌트로 분리
 'use client';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function PostList() {
@@ -20,7 +21,11 @@ export default function PostList() {
 		<ul>
 			{Posts.map((post, idx) => {
 				if (idx >= 10) return null;
-				return <li key={post.id}>{post.title}</li>;
+				return (
+					<li key={post.id}>
+						<Link href={`/post/${post.id}`}>{post.title}</Link>
+					</li>
+				);
 			})}
 		</ul>
 	);
