@@ -20,7 +20,8 @@ const rubik = Rubik_Maze({
 	weight: '400',
 	subsets: ['latin'],
 	display: 'swap',
-	preload: true, // subsets 가 지정되어 있을 시 preload 기능 사용 가능.
+	preload: true,
+	variable: '--font-rubik', // 직접 변수명 등록
 });
 
 export const metadata = {
@@ -31,10 +32,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
-			<body>
+			{/* 아래처럼, 직접 등록한 변수명을 설정 시 해당 JSX 요소 안쪽에서는 scss에서 등록된 변수명으로 폰트 설정 가능 */}
+			<body className={`wrap ${rubik.variable}`}>
 				<Header />
-				<h1 className='roboto'>No Google Font</h1>
-				<h1 className={rubik.className}>Google Font</h1>
+				<h1>Google Font</h1>
 				{children}
 			</body>
 		</html>
