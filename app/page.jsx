@@ -10,7 +10,7 @@ export default function Home() {
 			<h1>main Page</h1>
 
 			<div className={clsx(styles.pic)}>
-				<Image src={pic2} alt='image' width={300} height={300} quality={100} priority />
+				<Image src={pic2} alt='image' width={300} height={300} quality={100} placeholder='blur' />
 			</div>
 
 			<div className={clsx(styles.pic)}>
@@ -31,6 +31,10 @@ export default function Home() {
 	4. quality 속성을 활용하여, 직접 최적화 가능. (0~100, default 75)
 	5. priority 속성을 이용해서, 우선적으로 출력해야 하는 이미지에 우선순위 부여 가능.
 	6. 기본적으로 <Image /> 컴포넌트에 lazy loading 기능을 적용하는데, priority 적용 시 lazy loading 기능은 강제로 해제됨. (주의)
+	7. placeholder="blur" 로 지정 시 (로컬 이미지일 때) 미리 용량이 작은 blur이미지를 먼저 출력하고, 전체 이미지 렌더링 완료 시 바꿔치기해서 원래 이미지로 출력 (주의점: placeholder 지정 시 lazy-loading 기능이 제거되며, priority 속성과 함께 쓸 수 없음.(priority 적용 시 placeholder 동작이 안 됨.))
+	8. 처음 마운트 화면에 보일 큰 이미지에 적용할 수 있는 2가지 옵션 
+			- (1) priority 속성 부여 
+			- (2) placeholder 
 
 
 
@@ -51,4 +55,6 @@ export default function Home() {
 
 		( * ) fill 속성 적용 시 추가적으로 넣으면 좋은 속성 (권장사항) (예) : sizes="(min-width: 808px) 50vw, 100vw"
 
+
+	
 */
