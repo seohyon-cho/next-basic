@@ -1,12 +1,30 @@
-import PostList from '@/components/postList/postList';
-import styles from './post.module.scss';
-import clsx from 'clsx';
+'use client';
+import { useEffect, useState } from 'react';
 
 export default function Post() {
+	const [Post, setPost] = useState([]);
+
+	useEffect(() => {
+		// 순서 (3) - 컴포넌트 마운트 시, 미리 서버 라우터로 데이터 요청
+		fetch('/api/requestPost')
+			// 순서 (4) - 응답이 성공하면, 서버로부터 응답 객체를 전달 받고, state에 전달
+			.then((data) => data.json())
+			.then((json) => {
+				console.log(json);
+				setPost(json.result);
+			});
+	}, []);
+
 	return (
-		<div className={clsx(styles.post)}>
-			<h1>Post List</h1>
-			<PostList />
+		<div>
+			{/* 순서 (5) - 응답받은 데이터 객체를 state에 옮겨담은 것을 활용하여 화면 렌더링 */}
+			{Post.map((post) => {
+				return (
+					<article key={post.name}>
+						<h2>{post.name}</h2>
+					</article>
+				);
+			})}
 		</div>
 	);
 }
