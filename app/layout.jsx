@@ -26,7 +26,6 @@ export default function RootLayout({ children }) {
 			{/* clsx 활용 시, 변수에 조건문 적용 가능  */}
 			<body className={clsx('wrap', isRoboto && roboto.variable)}>
 				<Header />
-				<h1>Google Font</h1>
 				{children}
 			</body>
 		</html>
