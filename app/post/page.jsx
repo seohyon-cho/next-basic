@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 export default function Post() {
 	const [Post, setPost] = useState([]);
+	console.log(Post);
 
 	useEffect(() => {
 		fetch('/api/requestPost')
